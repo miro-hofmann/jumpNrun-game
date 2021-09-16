@@ -1,64 +1,46 @@
-////////    golden ratio        ////////////////////////////////////////////////
-const golden_ratio = 1.61803398874989484820458683436563811772030917980576286213;
-const small_golden_ratio = golden_ratio-1;
-////////////////////////////////////////////////////////////////////////////////
 
-////////    screen vars         ////////////////////////////////////////////////
-const screen_width = 1024;
-const screen_height = 768;
-const play_screen_height = screen_height*small_golden_ratio;
-const gap_to_play_screen = (screen_height - play_screen_height) / 2;
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * @file The main file of this p5js sketch.
+ *
+ *
+ *
+ * @author Miro Hofmann <miro-hofmann@posteo.org>
+ * @version 0.1
+ */
 
-////////    variables           ////////////////////////////////////////////////
-// groups
-var entities;
-// sprites
-var player;
-var ground;
-// physics
-const gravity = 1;
-// control
-var jump;
-////////////////////////////////////////////////////////////////////////////////
 
-////////    functions           ////////////////////////////////////////////////
-function draw_frame(){
-  fill(0);
-  rect(0, 0, screen_width, gap_to_play_screen);
-  rect(0, gap_to_play_screen + play_screen_height, 
-       screen_width, gap_to_play_screen);
-}
-////////////////////////////////////////////////////////////////////////////////
-
-////////    setup               ////////////////////////////////////////////////
+/** This is a setup function. */
 function setup() {
   createCanvas(screen_width, screen_height);
-  background(0);
 
   entities = new Group();
 
+  /** @todo make function for this in entities.js **/
   player = createSprite(300, 150);
-  player.height = play_screen_height * pow(small_golden_ratio, 4);
-  player.width = player.height*small_golden_ratio;
+  player.height = play_screen_height * pow(GRC, 4);
+  player.width = player.height*GRC;
   player.name = "Bernd";
   player.addToGroup(entities);
   player.friction = 0.03;
 
+  /** @todo make function for this in entities.js **/
   ground = createSprite(width / 2, 
                         gap_to_play_screen + 
-                        play_screen_height * small_golden_ratio);
-  ground.width = 900;
+                        play_screen_height * GRC);
+  ground.width = screen_width*GRC;
   ground.height = 50;
   ground.immovable = true;
+
   player.addToGroup(entities);
 }
-////////////////////////////////////////////////////////////////////////////////
 
-////////    draw                ////////////////////////////////////////////////
+/** This is a draw function. */
 function draw() {
-  fill(255);
-  rect(0, gap_to_play_screen, screen_width, play_screen_height);
+
+  push();
+  translate(width/2 - player.position.x, 0, 0);
+
+  background(255);
 
   player.velocity.x = 0;
   
@@ -79,6 +61,7 @@ function draw() {
   player.collide(ground);
   drawSprites();
   
-  draw_frame();
+  pop();
+
+  draw_frame_gui();
 }
-////////////////////////////////////////////////////////////////////////////////
