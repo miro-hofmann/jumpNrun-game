@@ -1,7 +1,7 @@
 # jumpNrun Test Chambers
 
 This webapp is sketching 
-different mechanics and setting 
+different mechanics and settings 
 for a jump n run game.
 
 
