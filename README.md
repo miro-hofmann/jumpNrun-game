@@ -5,7 +5,7 @@ different mechanics and setting
 for a jump n run game.
 
 
-## importand links
+## important links
 - [p5js reference](https://p5js.org/reference/)
 - for physics: [p5.play](https://molleindustria.github.io/p5.play/)
 	- *going to be replaced by [MatterJS](https://brm.io/matter-js/)*
