@@ -1,5 +1,5 @@
 function testChamber2_DOUBLE_JUMP(){
-  this.setup = function(){
+  this.enter = function(){
   }
 
   this.draw = function(){

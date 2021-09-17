@@ -3,8 +3,8 @@ function testChamber1_JUMP()
 
   this.mechanic = "JUMP";
 
-  this.setup = function()
-  {
+  this.enter = function()
+    {
     entities = new Group();
     init_player();
     init_ground();
@@ -43,9 +43,6 @@ function testChamber1_JUMP()
     draw_frame_gui();
 
     if(player.position.y>height){
-      player.position = createVector(300, 150);
-      player.velocity.x = 0;
-      player.velocity.y = 0;
       this.sceneManager.showScene( menu );
     }
 

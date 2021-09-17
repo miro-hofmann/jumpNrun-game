@@ -74,7 +74,7 @@ function menu(){
       fill(255-255*((frameCount - tempFrameCount)/100));
       text("Hello " + player_name + ",", width/2, height*pow(GRC,8) + height*pow(GRC,8));
       text("please choose a test chamber.", width/2, height*pow(GRC,8) + height*pow(GRC,6.5) + height*pow(GRC,8));
-      text("(by pressing a key)", width/2, height*pow(GRC,8) + height*pow(GRC,6.5) + height*pow(GRC,8) + height*pow(GRC,6.5));
+      text("(by clicking it)", width/2, height*pow(GRC,8) + height*pow(GRC,6.5) + height*pow(GRC,8) + height*pow(GRC,6.5));
   
   
       stroke(255);

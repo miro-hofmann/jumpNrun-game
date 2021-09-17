@@ -1,5 +1,5 @@
 function testChamber4(){
-    this.setup = function(){
+    this.enter = function(){
     }
   
     this.draw = function(){
