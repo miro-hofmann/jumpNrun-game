@@ -25,7 +25,7 @@ function testChamber1_JUMP()
       if (keyIsDown(RIGHT_ARROW) || keyIsDown(68))
         player.velocity.x = 5;
       if ((keyIsDown(UP_ARROW)  || keyIsDown(87)) && player.collide(ground) == true){
-        player.velocity.y -= 15;
+        player.velocity.y -= 17;
       }
       
       for (var i = 0; i < entities.length; i++) {
