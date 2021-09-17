@@ -1,8 +1,6 @@
 function testChamber1_JUMP()
 {
 
-  this.mechanic = "JUMP";
-
   this.enter = function()
     {
     entities = new Group();
