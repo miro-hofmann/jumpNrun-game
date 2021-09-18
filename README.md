@@ -4,6 +4,10 @@ This webapp is sketching
 different mechanics and settings 
 for a jump n run game.
 
+Wanna try it?
+
+-> go to https://miro-hofmann.github.io/jumpNrun-game/ :)
+
 
 ## important links
 - [p5js reference](https://p5js.org/reference/)
