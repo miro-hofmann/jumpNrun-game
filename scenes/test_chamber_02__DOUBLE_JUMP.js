@@ -97,7 +97,7 @@ function testChamber2_DOUBLE_JUMP() {
       doubleJumpedBefore = true;
       console.log('double jump');
       var v = createVector(0, -0.05);
-      Matter.Body.applyForce(player.body, player.body.position, v);aw
+      Matter.Body.applyForce(player.body, player.body.position, v);
     }
   };
 }
