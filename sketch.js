@@ -8,15 +8,12 @@
  * @version 0.1
  */
 
- var mgr;
+var mgr;
 
 /** This is a setup function. */
 function setup() {
   createCanvas(screen_width, screen_height);
   frameRate(60);
-
-
-
 
   mgr = new SceneManager();
   mgr.wire();

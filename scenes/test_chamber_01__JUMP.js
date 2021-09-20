@@ -1,4 +1,7 @@
-
+const KEY_CODE_W = 87;
+const KEY_CODE_A = 65;
+const KEY_CODE_S = 83;
+const KEY_CODE_D = 68;
 /**
  * This function is a scene invoked by p5.scenemanager.
  * 
@@ -21,11 +24,13 @@ function testChamber1_JUMP() {
    */
   this.enter = function()
     {
-    entities = new Group();
-    init_player();
+    init_player(playerName);
     init_ground();
 
-    player.addToGroup(entities);
+    engine = Engine.create();
+    world = engine.world;
+
+    addPhysicalEntitiesToWorld(world);
   }
 
   /**
@@ -34,40 +39,64 @@ function testChamber1_JUMP() {
   this.draw = function()
   {
     background(255); //white background
+    Engine.update(engine);
     
     // so you don't slide over the floor
-    player.velocity.x = 0;
-    
+    //player.velocity.x = 0;
     // controll of the player character
-    if (keyIsDown(LEFT_ARROW) || keyIsDown(65))
-      player.velocity.x = -5;
-    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68))
-      player.velocity.x = 5;
-    if (( keyIsDown(UP_ARROW)  || keyIsDown(87)) && 
-          player.collide(ground) == true) {
-      player.velocity.y -= 17;
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(KEY_CODE_A))
+    {
+      Matter.Body.setPosition(player.body, createVector(player.body.position.x-5, player.body.position.y))
     }
+    if (keyIsDown(RIGHT_ARROW) || keyIsDown(KEY_CODE_D)){
+      //Matter.Body.setVelocity(player.body, createVector(5,0));
+      Matter.Body.setPosition(player.body, createVector(player.body.position.x+5, player.body.position.y))
+    }
+    //if (( keyIsDown(UP_ARROW)  || keyIsDown(87))) {
+    //  var v = createVector(0, -0.01)
+    //  Matter.Body.applyForce(player.body, player.body.position, v);
+    //}
     
     // add gravity to all the entities
-    for (var i = 0; i < entities.length; i++) {
-      var e = entities[i];
-      e.velocity.y += gravity;
-    }
+    //for (var i = 0; i < entities.length; i++) {
+    //  var e = entities[i];
+    //  e.velocity.y += gravity;
+    //}
   
-    player.collide(ground); // so the player does not fall through
+    //player.collide(ground); // so the player does not fall through
 
     // creates illusion of camera following player
-    push(); {
-      translate(width/2 - player.position.x, 0, 0);
-      drawSprites(); // draws all the characters, objects, etc.
-    } pop();
-  
-    draw_frame_gui(); // draw all the p5.play sprites
+    push(); 
+    {
+      translate(width/2 - player.body.position.x, 0, 0);
+      showPhysicalEntities();
+    } 
+    pop();
+    draw_frame_gui();
 
-    // stop scene and go back to menu if player falls down
-    if(player.position.y>height){
-      this.sceneManager.showScene( menu );
+    if (DEBUG) {
+      const playerX = player.body.position.x + (width / 2 - player.body.position.x);
+      const playerY = player.body.position.y;
+      centerCircle = circle(playerX, playerY, 10);
+      label = text(`(${playerX}|${playerY})`, playerX + 20, playerY);
     }
 
+    // stop scene and go back to menu if player falls down
+    if(player.body.position.y>height){
+      this.sceneManager.showScene( menu );
+      player = null;
+      ground = null;
+      entities.length = 0;
+    }
+  }
+  this.keyPressed = function()
+  {
+    var pair = [player.body, ground.body];
+    player.onGround = Matter.Detector.collisions([pair], engine)[0];
+
+    if((keyCode==UP_ARROW|| keyCode==KEY_CODE_W) && player.onGround){
+      var v = createVector(0, -0.1);
+      Matter.Body.applyForce(player.body, player.body.position, v);
+    }
   }
 }

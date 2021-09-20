@@ -12,7 +12,7 @@ function name(){
           fill(255-255*((frameCount-200)/100));
           text("what is your name?", width/2, height/2);
         }
-      } else if(player_name == null) {
+      } else if(playerName == null) {
         textSize(height*pow(GRC,5.5));
         textAlign("center", "center")
         text(new_name, width/2, height/2);
@@ -28,7 +28,7 @@ function name(){
       } else if((keyCode >= 48 && keyCode<=90 || keyCode === 32) && new_name.length<20){
         new_name =  new_name + key;
       } else if(keyCode === ENTER){
-        player_name = new_name;
+        playerName = new_name;
       }
     }
   }

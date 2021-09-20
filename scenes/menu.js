@@ -11,7 +11,7 @@ function menu() {
         this.sceneManager.showScene(testChamber1_JUMP);
         break;
       case 2:
-        this.sceneManager.showScene(testChamber2_DOUBLE_JUMP);
+        this.sceneManager.showScene( testChamber2_DOUBLE_JUMP );
         break;
       case 3:
         this.sceneManager.showScene(testChamber3_BOX);
@@ -71,7 +71,7 @@ function menu() {
     textAlign('center', 'center');
     fill(255 - 255 * ((frameCount - tempFrameCount) / 100));
     text(
-      'Hello ' + player_name + ',',
+      'Hello ' + playerName + ',',
       width / 2,
       height * pow(GRC, 8) + height * pow(GRC, 8),
     );
