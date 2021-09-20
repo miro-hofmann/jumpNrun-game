@@ -42,17 +42,28 @@ const play_screen_height = screen_height * GRC;
  * @const {number}
  */
 const gap_to_play_screen = (screen_height - play_screen_height) / 2;
- /**
-  * This is a function draws the frame and gui
-  * (not the area where the action happens)
-  */
- //
- function draw_frame_gui(){
-    // black ...
-    fill(0);
-    // ... rectangles at top and botton that make a frame
-    //     -> action area is widescreen
-    rect(0, 0, screen_width, gap_to_play_screen);
-    rect(0, gap_to_play_screen + play_screen_height, 
-         screen_width, gap_to_play_screen);
-  }
+/**
+ * This is a function draws the frame and gui
+ * (not the area where the action happens)
+ */
+
+const groundy = gap_to_play_screen + play_screen_height * GRC;
+//
+function draw_frame_gui() {
+  // black ...
+  fill(0);
+  // ... rectangles at top and botton that make a frame
+  //     -> action area is widescreen
+  rect(0, 0, screen_width, gap_to_play_screen);
+  rect(
+    0,
+    gap_to_play_screen + play_screen_height,
+    screen_width,
+    gap_to_play_screen,
+  );
+}
+
+/**
+ * Controls the display of debug information.
+ */
+const DEBUG = true;
