@@ -16,4 +16,4 @@ Wanna try it?
 	- *going to be replaced by [MatterJS](https://brm.io/matter-js/)*
 - for the different scenes: [p5.sceenmanager](https://github.com/mveteanu/p5.SceneManager/tree/master/gamejs)
 - `\\ comments` use [jsdoc](https://devhints.io/jsdoc) standard
-- maybe for water animationr: http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/
+- maybe for water animation: [meatballs and marching squares](http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/)
