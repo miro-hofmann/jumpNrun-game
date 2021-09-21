@@ -38,6 +38,7 @@ function testChamber2_DOUBLE_JUMP() {
     let val = slider.value();
     doubleJumpThreshold = groundy - 25 - val;
     background(255); //white background
+    Matter.Body.setAngle(player.body, 0)
     Engine.update(engine);
 
 
@@ -61,10 +62,10 @@ function testChamber2_DOUBLE_JUMP() {
     draw_frame_gui();
 
     if (DEBUG) {
-      const playerX = player.body.position.x + (width / 2 - player.body.position.x);
-      const playerY = player.body.position.y;
-      centerCircle = circle(playerX, playerY, 10);
-      label = text(`(${playerX}|${playerY})`, playerX + 20, playerY);
+      const playerX = round(player.body.position.x, 2)
+      const playerY = round(player.body.position.y, 2);
+      centerCircle = circle(player.body.position.x + (width / 2 - player.body.position.x), playerY, 10);
+      label = text(`(${playerX}|${playerY})`, player.body.position.x + (width / 2 - player.body.position.x) + 20, playerY);
     }
     const l = line(0, doubleJumpThreshold, 1024, doubleJumpThreshold);
 

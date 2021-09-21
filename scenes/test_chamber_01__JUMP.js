@@ -39,6 +39,7 @@ function testChamber1_JUMP() {
   this.draw = function()
   {
     background(255); //white background
+    Matter.Body.setAngle(player.body, 0)
     Engine.update(engine);
     
     // so you don't slide over the floor
@@ -76,9 +77,10 @@ function testChamber1_JUMP() {
 
     if (DEBUG) {
       const playerX = player.body.position.x + (width / 2 - player.body.position.x);
-      const playerY = player.body.position.y;
+      const playerY =  round(player.body.position.y,2);
       centerCircle = circle(playerX, playerY, 10);
-      label = text(`(${playerX}|${playerY})`, playerX + 20, playerY);
+      var xLabelText = round(playerX- (width / 2 - player.body.position.x),2);
+      label = text(`(${xLabelText}|${playerY})`, playerX + 20, playerY);
     }
 
     // stop scene and go back to menu if player falls down

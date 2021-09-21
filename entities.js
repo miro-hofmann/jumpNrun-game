@@ -124,6 +124,8 @@ function showPhysicalEntities(){
     ]
   PhysicalEntity.call(this, name, pos, vertexPoints);
 
+  this.color = colors.Grey;
+
   this.show = function() {
     var pos = this.body.position;
     var angle = this.body.angle;
@@ -132,15 +134,16 @@ function showPhysicalEntities(){
     translate(pos.x, pos.y);
     rotate(angle);
     noStroke();
-    fill(100);
+    fill(this.color);
     beginShape();
     {
       for (var i = 0; i < this.body.vertices.length; i++){
         var v = this.body.vertices[i];
-        vertex(v.x-this.body.position.x, v.y-this.body.position.y);
+        vertex(v.x-pos.x, v.y-pos.y);
       } 
     }
     endShape();
+
     pop();
   }
 }
@@ -188,6 +191,8 @@ function init_player(name) {
    ];
  PhysicalEntity.call(this, name, pos, vertexPoints, false, null, this.options);
 
+ this.color = colors.Brown;
+
  this.show = function() {
    var pos = this.body.position;
    var angle = this.body.angle;
@@ -196,7 +201,7 @@ function init_player(name) {
    translate(pos.x, pos.y);
    rotate(angle);
    noStroke();
-   fill(0);
+   fill(this.color);
    beginShape();
    {
      for (var i = 0; i < this.body.vertices.length; i++){
@@ -211,8 +216,8 @@ function init_player(name) {
 
 function init_ground() {
   if(!ground){
-    var position = createVector(width / 2, groundy);
-    ground = new Ground("ground", position, screen_width * GRC, 50);
+    var position = createVector(width / 2, groundy+100);
+    ground = new Ground("ground", position, screen_width * GRC, 250);
     //ground.width = screen_width * GRC;
     //ground.height = 50;
     //ground.immovable = true;
