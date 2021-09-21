@@ -8,7 +8,7 @@
  *     this.sceneManager.showScene( testChamber3_BOX ); // if already in a scene
  * 
  */
-function testChamber3_BOX(){
+function testChamber3_WALL_JUMP(){
   /**
    * This function runs every time the scene is invoked.
    */

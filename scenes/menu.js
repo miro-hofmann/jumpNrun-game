@@ -14,7 +14,7 @@ function menu() {
         this.sceneManager.showScene( testChamber2_DOUBLE_JUMP );
         break;
       case 3:
-        this.sceneManager.showScene(testChamber3_BOX);
+        this.sceneManager.showScene(testChamber3_WALL_JUMP);
         break;
       case 4:
         this.sceneManager.showScene(testChamber4);
@@ -126,7 +126,7 @@ function menu() {
     textSize(height * pow(GRC, 6));
     text('3', (7 * distX) / 2, (3 * distY) / 2);
     textSize(height * pow(GRC, 8));
-    text('BOX', (7 * distX) / 2, (3 * distY) / 2 + height * pow(GRC, 6));
+    text('WALL JUMP', (7 * distX) / 2, (3 * distY) / 2 + height * pow(GRC, 6));
 
     for (let x = 1; x < chamber_root - 1; x++) {
       for (let y = 1; y < chamber_root - 1; y++) {
