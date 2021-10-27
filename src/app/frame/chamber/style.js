@@ -1,0 +1,11 @@
+import styled from 'styled-components';
+
+export const ChamberContainer = styled.div`
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: bottom;
+  padding: 20px;
+`;

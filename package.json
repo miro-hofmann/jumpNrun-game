@@ -1,0 +1,50 @@
+{
+  "name": "jumpnrun-game",
+  "version": "0.0.1",
+  "description": "Jump & Run Sandbox",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "webpack serve --stats-error-details --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miro-hofmann/jumpNrun-game.git"
+  },
+  "keywords": [
+    "test",
+    "sandbox",
+    "game",
+    "jump & run"
+  ],
+  "preview": true,
+  "private": true,
+  "author": "Miro Hofmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miro-hofmann/jumpNrun-game/issues"
+  },
+  "homepage": "https://github.com/miro-hofmann/jumpNrun-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.3",
+    "create-file-webpack": "^1.0.2",
+    "react-hot-loader": "^4.13.0",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "matter-js": "^0.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-p5": "^1.3.21",
+    "react-router-dom": "^5.3.0",
+    "styled-components": "^5.3.3"
+  }
+}
