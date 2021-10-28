@@ -1,5 +1,5 @@
 function name(){
-    var new_name = "";
+    let new_name = "";
     this.draw = function(){
       background(255);
       if(new_name == ""){
@@ -26,7 +26,7 @@ function name(){
       if(keyCode == BACKSPACE && new_name.length>0){
         new_name = new_name.slice(0,-1);
       } else if((keyCode >= 48 && keyCode<=90 || keyCode === 32) && new_name.length<20){
-        new_name =  new_name + key;
+        new_name += key;
       } else if(keyCode === ENTER){
         playerName = new_name;
       }

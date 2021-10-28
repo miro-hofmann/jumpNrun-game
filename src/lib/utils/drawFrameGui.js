@@ -1,4 +1,4 @@
-import { CANVAS, GAP_TO_PLAY_SCREEN, PLAY_SCREEN } from './constants';
+import { CANVAS, GAP_TO_PLAY_SCREEN, PLAY_SCREEN } from '../gameConstants';
 
 export const drawFrameGui = (p5) => {
   // black ...

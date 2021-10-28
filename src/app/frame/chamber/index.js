@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ChamberContainer } from './style';
 
 export const Chamber = ({ sceneName, sceneId }) => {
-  let history = useHistory();
+  const history = useHistory();
   return (
     <Link to={`/scenes/${sceneId}`}>
       <ChamberContainer>{sceneName}</ChamberContainer>

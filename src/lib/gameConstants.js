@@ -49,3 +49,16 @@ export const GAP_TO_PLAY_SCREEN = (CANVAS.height - PLAY_SCREEN.height) / 2;
 export const GROUND_Y = GAP_TO_PLAY_SCREEN + PLAY_SCREEN.height * GRC;
 
 export const DEBUG = false;
+
+/**
+ * physical gravity f.e. for player
+ * @const {number}
+ */
+export const GRAVITY = 1;
+
+/** Matter Aliasses
+ * var Engine = Matter.Engine,
+  Runner = Matter.Runner,
+  Bodies = Matter.Bodies,
+  Composite = Matter.Composite;
+ */

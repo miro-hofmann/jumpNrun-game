@@ -8,7 +8,7 @@
  * @version 0.1
  */
 
-var mgr;
+let mgr;
 
 /** This is a setup function. */
 function setup() {

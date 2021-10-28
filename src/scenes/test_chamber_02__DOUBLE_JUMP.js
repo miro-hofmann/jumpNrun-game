@@ -1,4 +1,4 @@
-var doubleJumpThreshold = 0;
+let doubleJumpThreshold = 0;
 /**
  * This function is a scene invoked by p5.scenemanager.
  *
@@ -10,7 +10,7 @@ var doubleJumpThreshold = 0;
  *
  */
 function testChamber2_DOUBLE_JUMP() {
-  var doubleJumpedBefore = false;
+  let doubleJumpedBefore = false;
 
   this.setup = () => {
     slider = createSlider(0, 255, 0);
@@ -35,9 +35,9 @@ function testChamber2_DOUBLE_JUMP() {
    * This function is the draw-loop of the scene.
    */
   this.draw = () => {
-    let val = slider.value();
+    const val = slider.value();
     doubleJumpThreshold = groundy - 25 - val;
-    background(255); //white background
+    background(255); // white background
     Matter.Body.setAngle(player.body, 0)
     Engine.update(engine);
 
@@ -48,7 +48,7 @@ function testChamber2_DOUBLE_JUMP() {
       Matter.Body.setPosition(player.body, createVector(player.body.position.x-5, player.body.position.y))
     }
     if (keyIsDown(RIGHT_ARROW) || keyIsDown(KEY_CODE_D)){
-      //Matter.Body.setVelocity(player.body, createVector(5,0));
+      // Matter.Body.setVelocity(player.body, createVector(5,0));
       Matter.Body.setPosition(player.body, createVector(player.body.position.x+5, player.body.position.y))
     }
 
@@ -79,7 +79,7 @@ function testChamber2_DOUBLE_JUMP() {
   };
   
   this.keyPressed = () => {
-    var pair = [player.body, ground.body];
+    const pair = [player.body, ground.body];
     player.onGround = Matter.Detector.collisions([pair], engine)[0];
     if(player.onGround){
       doubleJumpedBefore = false;

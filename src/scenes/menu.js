@@ -1,9 +1,9 @@
 function menu() {
-  var tempFrameCount;
+  let tempFrameCount;
 
-  let chamber_root = 6;
-  let distX = width / chamber_root;
-  let distY = height / chamber_root;
+  const chamber_root = 6;
+  const distX = width / chamber_root;
+  const distY = height / chamber_root;
 
   this.loadChamber = function (num) {
     switch (num) {
@@ -71,7 +71,7 @@ function menu() {
     textAlign('center', 'center');
     fill(255 - 255 * ((frameCount - tempFrameCount) / 100));
     text(
-      'Hello ' + playerName + ',',
+      `Hello ${  playerName  },`,
       width / 2,
       height * pow(GRC, 8) + height * pow(GRC, 8),
     );

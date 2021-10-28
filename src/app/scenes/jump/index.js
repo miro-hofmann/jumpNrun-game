@@ -1,8 +1,6 @@
-import Matter from 'matter-js';
 import React from 'react';
 import Sketch from 'react-p5';
-import { DEBUG } from '../../../lib/constants';
-import { drawFrameGui } from '../../../lib/utils';
+
 export const JumpSketch = () => {
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(500, 400).parent(canvasParentRef);

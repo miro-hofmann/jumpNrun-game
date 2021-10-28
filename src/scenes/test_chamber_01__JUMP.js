@@ -35,12 +35,12 @@ function testChamber1_JUMP() {
    * This function is the draw-loop of the scene.
    */
   this.draw = function () {
-    background(255); //white background
+    background(255); // white background
     Matter.Body.setAngle(player.body, 0);
     Engine.update(engine);
 
     // so you don't slide over the floor
-    //player.velocity.x = 0;
+    // player.velocity.x = 0;
     // controll of the player character
     if (keyIsDown(LEFT_ARROW) || keyIsDown(KEY_CODE_A)) {
       Matter.Body.setPosition(
@@ -49,7 +49,7 @@ function testChamber1_JUMP() {
       );
     }
     if (keyIsDown(RIGHT_ARROW) || keyIsDown(KEY_CODE_D)) {
-      //Matter.Body.setVelocity(player.body, createVector(5,0));
+      // Matter.Body.setVelocity(player.body, createVector(5,0));
       Matter.Body.setPosition(
         player.body,
         createVector(player.body.position.x + 5, player.body.position.y),
@@ -69,7 +69,7 @@ function testChamber1_JUMP() {
         player.body.position.x + (width / 2 - player.body.position.x);
       const playerY = round(player.body.position.y, 2);
       centerCircle = circle(playerX, playerY, 10);
-      var xLabelText = round(playerX - (width / 2 - player.body.position.x), 2);
+      const xLabelText = round(playerX - (width / 2 - player.body.position.x), 2);
       label = text(`(${xLabelText}|${playerY})`, playerX + 20, playerY);
     }
 
@@ -82,11 +82,11 @@ function testChamber1_JUMP() {
     }
   };
   this.keyPressed = function () {
-    var pair = [player.body, ground.body];
+    const pair = [player.body, ground.body];
     player.onGround = Matter.Detector.collisions([pair], engine)[0];
 
     if ((keyCode == UP_ARROW || keyCode == KEY_CODE_W) && player.onGround) {
-      var v = createVector(0, -0.1);
+      const v = createVector(0, -0.1);
       Matter.Body.applyForce(player.body, player.body.position, v);
     }
   };

@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "mocha": true,
+    "jest": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": ["prettier", "react-hooks"],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}

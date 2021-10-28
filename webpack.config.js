@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const eslint = require('eslint-webpack-plugin');
 const file = require('create-file-webpack');
 
 module.exports = {
