@@ -7,9 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "webpack serve --stats-error-details --mode=development",
+    "dev": "webpack serve --stats-error-details --mode=development --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ignore-pattern .eslintignore --config .eslintrc \"./**/*.js\" --fix"
+    "lint": "eslint --ignore-pattern .eslintignore --config .eslintrc \"./**/*.js\" --fix",
+    "build": "webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",

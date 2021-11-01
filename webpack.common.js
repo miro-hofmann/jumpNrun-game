@@ -1,6 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-const eslint = require('eslint-webpack-plugin');
 const file = require('create-file-webpack');
 
 module.exports = {
@@ -11,14 +9,7 @@ module.exports = {
     publicPath: '/',
     clean: true,
   },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    hot: true,
 
-    historyApiFallback: true,
-  },
   module: {
     rules: [
       {
@@ -36,7 +27,7 @@ module.exports = {
       path: path.resolve(__dirname, './dist'),
       fileName: 'index.html',
       content:
-        '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Jump & Run Sandbox</title></head><body><div id="app"></div><script src="/bundle.js"></script></body></html>',
+        '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Jump & Run Sandbox</title></head><body><div id="app"></div><script src="./bundle.js"></script></body></html>',
     }),
   ],
 };
