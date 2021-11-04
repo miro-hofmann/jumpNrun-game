@@ -1,3 +1,6 @@
+import Matter from 'matter-js';
+import { GRC, PLAY_SCREEN } from '../gameConstants';
+import { PhysicalEntity } from './physicalEntity';
 /**
  * A class for the player character.
  *
@@ -5,8 +8,8 @@
  * @param {Vector} pos - {@link Vector} : center of the physical entity on the canvas
  *
  */
-function Player(name, pos) {
-  const vertexPoints = [
+class Player extends PhysicalEntity {
+  #vertexPoints = [
     Matter.Vector.create(
       play_screen_height * pow(GRC, 5) * 0.5,
       play_screen_height * pow(GRC, 4) * 0.5,
@@ -24,13 +27,15 @@ function Player(name, pos) {
       play_screen_height * pow(GRC, 4) * 0.5,
     ),
   ];
-  PhysicalEntity.call(this, name, pos, vertexPoints);
+  #color;
+  constructor(name, position, color = colors.Grey) {
+    super(name, position);
+    this.#color = color;
+  }
 
-  this.color = colors.Grey;
-
-  this.show = function () {
+  show() {
     const pos = this.body.position;
-    const {angle} = this.body;
+    const { angle } = this.body;
 
     push();
     translate(pos.x, pos.y);
@@ -45,18 +50,15 @@ function Player(name, pos) {
       }
     }
     endShape();
-
     pop();
-  };
+  }
 
-  function init_player(name) {
-    if (!player) {
-      const position = createVector(300, 150);
-      player = new Player('test subject', position);
-      player.height = play_screen_height * pow(GRC, 4);
-      player.width = player.height * GRC;
-      // player.addToGroup(entities);
-      // player.friction = 0.03;
-    }
+  static initPlayer(name, p5) {
+    const position = p5.createVector(300, 150);
+    const height = PLAY_SCREEN.height * pow(GRC, 4);
+    const width = height * GRC;
+    const player = new Player(name || 'test subject', position, width, height);
+
+    return player;
   }
 }

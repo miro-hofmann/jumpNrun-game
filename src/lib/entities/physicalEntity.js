@@ -1,3 +1,6 @@
+import Matter from 'matter-js';
+import { Entity } from './enitity';
+
 /**
  * A physical entity class.
  *
@@ -10,41 +13,47 @@
  * @param {Array|Number} vertices - exact list/number of vertices
  *
  */
-function PhysicalEntity(
-  name,
-  pos,
-  vertices = null,
-  circle = false,
-  radius = null,
-  options = null,
-) {
-  Entity.call(this, name);
+export class PhysicalEntity extends Entity {
+  #body;
+  #vertices;
+  #circle;
+  #radius;
 
-  this.body;
-  if (vertices && !circle && !radius) {
-    this.body = Matter.Bodies.fromVertices(
-      pos.x,
-      pos.y,
-      vertices,
-      (options = options),
-    );
-  } else if (vertices && !circle && radius) {
-    this.body = Matter.Bodies.polygon(
-      pos.x,
-      pos.y,
-      vertices,
-      radius,
-      (options = options),
-    );
-  } else if (!vertices && circle && radius) {
-    this.body = Matter.Bodies.circle(pos.x, pos.y, radius, (options = options));
-  } else {
-    throw 'Something went wrong while creating a physical entity.';
+  constructor(
+    name,
+    pos,
+    vertices = null,
+    circle = false,
+    radius = null,
+    options = null,
+  ) {
+    super(name);
+    if (vertices && !circle && !radius) {
+      this.body = Matter.Bodies.fromVertices(pos.x, pos.y, vertices, options);
+    } else if (vertices && !circle && radius) {
+      this.body = Matter.Bodies.polygon(
+        pos.x,
+        pos.y,
+        vertices,
+        radius,
+        options,
+      );
+    } else if (!vertices && circle && radius) {
+      this.body = Matter.Bodies.circle(
+        pos.x,
+        pos.y,
+        radius,
+        (options = options),
+      );
+    } else {
+      throw 'Something went wrong while creating a physical entity.';
+    }
+    window.jnr.physicalEntities.push(this);
   }
 
-  this.show = function () {
+  show() {
     const pos = this.body.position;
-    const {angle} = this.body;
+    const { angle } = this.body;
 
     push();
     // translate(pos.x, pos.y);
@@ -60,7 +69,5 @@ function PhysicalEntity(
     }
     endShape();
     pop();
-  };
-
-  physicalEntities.push(this);
+  }
 }

@@ -1,3 +1,4 @@
+import { v1 as uuidv1 } from 'uuid';
 /**
  * An entity class.
  *
@@ -10,21 +11,24 @@
  * @param {string} name - The name of this entity.
  *
  */
-function Entity(name) {
-  this.name = name;
-  this.id = entities.length + 1;
+export class Entity {
+  #name;
+  #id;
 
-  entities.push(this);
-
-  this.getName = function () {
-    return this.name;
-  };
-
-  this.getId = function () {
-    return this.id;
-  };
-
-  this.setName = function (name) {
+  constructor(name) {
     this.name = name;
-  };
+    this.id = uuidv1();
+    window.jnr.entities.push(this);
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  getId() {
+    return this.id;
+  }
+  setName(name) {
+    this.name = name;
+  }
 }
