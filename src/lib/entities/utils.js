@@ -1,16 +1,18 @@
+import Matter from 'matter-js';
+
 /**
  * Add all the physical entities to the matter.js world.
  */
-function addPhysicalEntitiesToWorld(world) {
-  for (let i = 0; i < physicalEntities.length; i++) {
-    Composite.add(world, physicalEntities[i].body);
+export const addPhysicalEntitiesToWorld = (world) => {
+  for (let i = 0; i < window.jnr.physicalEntities.length; i++) {
+    Matter.Composite.add(world, window.jnr.physicalEntities[i].body);
   }
-}
+};
 /**
  * Draws all the physical entities on the p5.js canvas.
  */
-function showPhysicalEntities() {
-  for (let i = 0; i < physicalEntities.length; i++) {
-    physicalEntities[i].show();
+export const showPhysicalEntities = () => {
+  for (let i = 0; i < window.jnr.physicalEntities.length; i++) {
+    window.jnr.physicalEntities[i].show();
   }
-}
+};

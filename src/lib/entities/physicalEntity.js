@@ -15,11 +15,9 @@ import { Entity } from './enitity';
  */
 export class PhysicalEntity extends Entity {
   #body;
-  #vertices;
-  #circle;
-  #radius;
 
   constructor(
+    p5,
     name,
     pos,
     vertices = null,
@@ -27,11 +25,11 @@ export class PhysicalEntity extends Entity {
     radius = null,
     options = null,
   ) {
-    super(name);
+    super(p5, name);
     if (vertices && !circle && !radius) {
-      this.body = Matter.Bodies.fromVertices(pos.x, pos.y, vertices, options);
+      this.#body = Matter.Bodies.fromVertices(pos.x, pos.y, vertices, options);
     } else if (vertices && !circle && radius) {
-      this.body = Matter.Bodies.polygon(
+      this.#body = Matter.Bodies.polygon(
         pos.x,
         pos.y,
         vertices,
@@ -39,35 +37,31 @@ export class PhysicalEntity extends Entity {
         options,
       );
     } else if (!vertices && circle && radius) {
-      this.body = Matter.Bodies.circle(
-        pos.x,
-        pos.y,
-        radius,
-        (options = options),
-      );
+      this.#body = Matter.Bodies.circle(pos.x, pos.y, radius, options);
     } else {
-      throw 'Something went wrong while creating a physical entity.';
+      throw new Error('Something went wrong while creating a physical entity.');
     }
     window.jnr.physicalEntities.push(this);
   }
 
-  show() {
-    const pos = this.body.position;
-    const { angle } = this.body;
+  getBody = () => this.#body;
 
-    push();
-    // translate(pos.x, pos.y);
-    rotate(angle);
-    noStroke();
-    fill(255, 0, 255);
-    beginShape();
-    {
-      for (let i = 0; i < this.body.vertices.length; i++) {
-        const v = this.body.vertices[i];
-        vertex(v.x, v.y);
-      }
+  show() {
+    const { angle /* position */ } = this.#body;
+
+    this.p5.push();
+    // translate(position.x, position.y);
+    this.p5.rotate(angle);
+    this.p5.noStroke();
+    this.p5.fill(255, 0, 255);
+    this.p5.beginShape();
+
+    for (let i = 0; i < this.#body.vertices.length; i++) {
+      const v = this.#body.vertices[i];
+      this.p5.vertex(v.x, v.y);
     }
-    endShape();
-    pop();
+
+    this.p5.endShape();
+    this.p5.pop();
   }
 }

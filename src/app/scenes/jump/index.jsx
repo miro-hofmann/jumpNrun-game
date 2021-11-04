@@ -15,16 +15,16 @@ export const JumpSketch = () => {
     p5.createCanvas(500, 400).parent(canvasParentRef);
   };
 
-  const draw = (p5, engine) => {
-    p5.background(255); //white background
+  const draw = (p5) => {
+    p5.background(255); // white background
     Matter.Body.setAngle(player.body, 0);
-    p5.Engine.update(engine);
+    p5.Engine.update(engine.current);
 
     p5.push();
-    {
+    
       p5.translate(width / 2 - player.body.position.x, 0, 0);
       p5.showPhysicalEntities();
-    }
+    
     p5.pop();
     if (player.current.body.position.y > height) {
       this.sceneManager.showScene(menu);

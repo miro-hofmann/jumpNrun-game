@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Frame } from './frame';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle } from './style';
 import { Routes } from './routes';
 

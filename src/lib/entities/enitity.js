@@ -13,10 +13,14 @@ import { v1 as uuidv1 } from 'uuid';
  */
 export class Entity {
   #name;
+
   #id;
 
-  constructor(name) {
-    this.name = name;
+  #p5;
+
+  constructor(p5, name) {
+    this.p5 = p5;
+    this.this.name = name;
     this.id = uuidv1();
     window.jnr.entities.push(this);
   }
@@ -28,6 +32,7 @@ export class Entity {
   getId() {
     return this.id;
   }
+
   setName(name) {
     this.name = name;
   }

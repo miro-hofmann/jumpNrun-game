@@ -6,6 +6,7 @@ window.jnr.entities = [];
 window.jnr.physicakEntities = [];
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
 if (module.hot) {
   module.hot.accept();
 }

@@ -1,6 +1,7 @@
 import Matter from 'matter-js';
 import { GRC, PLAY_SCREEN } from '../gameConstants';
 import { PhysicalEntity } from './physicalEntity';
+import { colors } from '../uiConstants';
 /**
  * A class for the player character.
  *
@@ -8,56 +9,63 @@ import { PhysicalEntity } from './physicalEntity';
  * @param {Vector} pos - {@link Vector} : center of the physical entity on the canvas
  *
  */
-class Player extends PhysicalEntity {
+export class Player extends PhysicalEntity {
+  #color;
+
   #vertexPoints = [
     Matter.Vector.create(
-      play_screen_height * pow(GRC, 5) * 0.5,
-      play_screen_height * pow(GRC, 4) * 0.5,
+      PLAY_SCREEN.height * GRC ** 5 * 0.5,
+      PLAY_SCREEN.height * GRC ** 4 * 0.5,
     ),
     Matter.Vector.create(
-      play_screen_height * pow(GRC, 5) * 0.5,
-      -play_screen_height * pow(GRC, 4) * 0.5,
+      PLAY_SCREEN.height * GRC ** 5 * 0.5,
+      -PLAY_SCREEN.height * GRC ** 4 * 0.5,
     ),
     Matter.Vector.create(
-      -play_screen_height * pow(GRC, 5) * 0.5,
-      -play_screen_height * pow(GRC, 4) * 0.5,
+      -PLAY_SCREEN.height * GRC ** 5 * 0.5,
+      -PLAY_SCREEN.height * GRC ** 4 * 0.5,
     ),
     Matter.Vector.create(
-      -play_screen_height * pow(GRC, 5) * 0.5,
-      play_screen_height * pow(GRC, 4) * 0.5,
+      -PLAY_SCREEN.height * GRC ** 5 * 0.5,
+      PLAY_SCREEN.height * GRC ** 4 * 0.5,
     ),
   ];
-  #color;
-  constructor(name, position, color = colors.Grey) {
-    super(name, position);
+
+  constructor(p5, name, position, color = colors.Grey) {
+    super(p5, name, position);
     this.#color = color;
   }
 
   show() {
-    const pos = this.body.position;
-    const { angle } = this.body;
+    const { angle, position } = this.getBody();
 
-    push();
-    translate(pos.x, pos.y);
-    rotate(angle);
-    noStroke();
-    fill(this.color);
-    beginShape();
-    {
-      for (let i = 0; i < this.body.vertices.length; i++) {
-        const v = this.body.vertices[i];
-        vertex(v.x - pos.x, v.y - pos.y);
-      }
+    this.p5.push();
+    this.p5.translate(position.x, position.y);
+    this.p5.rotate(angle);
+    this.p5.noStroke();
+    this.p5.fill(this.#color);
+    this.p5.beginShape();
+
+    for (let i = 0; i < this.getBody().vertices.length; i++) {
+      const v = this.getBody().vertices[i];
+      this.p5.vertex(v.x - position.x, v.y - position.y);
     }
-    endShape();
-    pop();
+
+    this.p5.endShape();
+    this.p5.pop();
   }
 
   static initPlayer(name, p5) {
     const position = p5.createVector(300, 150);
-    const height = PLAY_SCREEN.height * pow(GRC, 4);
+    const height = PLAY_SCREEN.height * GRC ** 4;
     const width = height * GRC;
-    const player = new Player(name || 'test subject', position, width, height);
+    const player = new Player(
+      p5,
+      name || 'test subject',
+      position,
+      width,
+      height,
+    );
 
     return player;
   }
